@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Local Game</title>
+    <script src="//cdn.socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="/static/game.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 1em;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #f9f9f9;
+        }
+
+        input, button {
+            font-size: 1.2em;
+            margin: 0.5em 0;
+            width: 100%;
+            padding: 0.6em;
+        }
+
+        #results, #points, #playerScores {
+            margin-top: 1em;
+            font-size: 1.1em;
+        }
+
+        ul {
+            padding-left: 1em;
+        }
+
+        h1, h2 {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div id="main_screen" style="display:block;">
+        <h1>Closest Wins!!!</h1>
+        <div id="rules" style="font-size: 1em; background: #eef; padding: 1em; border-radius: 10px; margin-bottom: 1em;">
+            <h2>📜 Game Rules</h2>
+            <ul>
+                <li>2 or more players to start</li>
+                <li>Each player starts with <strong>10 points</strong></li>
+                <li>Each round, choose a number between <strong>0 and 100</strong></li>
+                <li>After all players entered a number, an average is calculated and then multiplied by <strong>0.8</strong></li>
+                <li>The player(s) whose number is closest to the result <strong>win the round</strong></li>
+                <li>All others lose 1 point</li>
+                <li><strong>Special case:</strong> If two or more players submit the same number and one and only one player submits 100, the player with 100 wins the round.</li>
+                <li><strong>Special case 2:</strong> If only two players remain and they submit 0 and 100, the player who submitted 100 wins the round. </li>
+                <li>Players are eliminated at 0 points</li>
+                <li>The game continues until <strong>1 player remains</strong></li>
+            </ul>
+        </div>
+        <input id="nameInput" placeholder="Your name" />
+        <button onclick="joinGame()">Join</button>
+        <button id="adminRestartBtn" onclick="restartGameWithPassword()" title="Restart Game (Admin)" style="
+          font-size: 0.8em;
+          padding: 4px 6px;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 22px;
+          background-color: rgba(255, 255, 255, 0.3); /* semi-transparent white */
+          border: 1px solid rgba(255, 255, 255, 0.5); /* semi-transparent border */
+          cursor: pointer;
+        ">
+            ⟳
+        </button>
+    </div>
+
+
+    <div id="lobby" style="display:none;">
+        <h2>Lobby</h2>
+        <div id="playersList" style="margin-top: 1em;"></div>
+        <button onclick="sendReady()">I'm Ready</button>
+    </div>
+
+    <div id="gameArea" style="display:none;">
+        <p id="points"></p>
+        <div id="results" style="
+            margin-top: 1em;
+            padding: 10px;
+            min-height: 50px;
+            display: block;
+            background-color: #f8f8f8;
+            color: black;
+            font-family: sans-serif;
+            font-size: 16px;
+            border: 1px solid #ccc;">
+        </div>
+        <p><strong>Now enter your best guess</strong></p>
+        <input type="number" id="guessInput" min="0" max="100" />
+        <button onclick="submitGuess()">Submit</button>
+        <div id="submitMessage" style="margin-top: 10px; font-style: italic; color: green;"></div>
+        <button onclick="togglePause()" id="pauseButton">Pause</button>
+        <div id="pauseMessage" style="color:red; font-weight: bold;"></div>
+        <div id="roundCounter" style="margin-top: 1em; font-weight: bold;"></div>
+        <div id="playerScores" style="margin-top: 1em;"></div>
+    </div>
+    <div id="gameOverArea" style="display:none; margin-top: 1em;">
+        <strong id="gameOverMessage"></strong><br>
+        <button onclick="restartGame()">Restart Game</button>
+    </div>
+    <div id="errorMessage" style="display:none; color: red;"></div>
+</body>
+</html>
