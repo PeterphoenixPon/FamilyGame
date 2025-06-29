@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Trivia Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #game {
+            margin-top: 30px;
+        }
+
+        .option-button {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px auto;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #ffffff;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .option-button:hover {
+                background-color: #007BFF;
+                color: white;
+            }
+
+        input, button {
+            font-size: 16px;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .admin-button {
+            margin-top: 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+
+            .admin-button:hover {
+                background-color: #c82333;
+            }
+        .runway {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 600px; /* 20 blocks * (16px + 4px gap) approx */
+        }
+
+        .block {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            background-color: #ddd;
+            transition: background-color 0.4s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            user-select: none;
+        }
+
+            .block.filled {
+                background-color: #e0f0ff;
+                color: #007BFF;
+            }
+
+        .player-name {
+            font-weight: bold;
+            margin-right: 10px;
+            width: 240px;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .icon-option.selected {
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            padding: 2px 6px;
+        }
+
+        .player-runway-container {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trivia Quiz</h1>
+    <div style="text-align:center;">
+        <input id="username" placeholder="Enter your name" />
+        <button onclick="joinGame()">Join</button>
+    </div>
+    <div id="icon-selector" style="text-align:center; margin-top: 10px;">
+        <p>Select your icon:</p>
+        <span class="icon-option" data-icon="😀" style="font-size: 28px; cursor: pointer; margin: 0 8px;">😀</span>
+        <span class="icon-option" data-icon="🚀" style="font-size: 28px; cursor: pointer; margin: 0 8px;">🚀</span>
+        <span class="icon-option" data-icon="🐱" style="font-size: 28px; cursor: pointer; margin: 0 8px;">🐱</span>
+        <span class="icon-option" data-icon="🎯" style="font-size: 28px; cursor: pointer; margin: 0 8px;">🎯</span>
+        <span class="icon-option" data-icon="🌟" style="font-size: 28px; cursor: pointer; margin: 0 8px;">🌟</span>
+    </div>
+    <div id="game"></div>
+    <div style="text-align:center;">
+        <button class="admin-button" onclick="resetGame()">🔒 Admin Reset</button>
+    </div>
+
+    <script>
+        // On page load, highlight default icon
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelector(`.icon-option[data-icon="${selectedIcon}"]`).classList.add('selected');
+        });
+        const socket = io();
+        let currentUsername = "";
+
+        function joinGame() {
+            currentUsername = document.getElementById('username').value;
+            socket.emit('join', { username: currentUsername });
+        }
+
+        function answer(option) {
+            socket.emit('answer', { username: currentUsername, answer: option });
+        }
+
+        function resetGame() {
+            const password = prompt("Enter admin password:");
+            if (password !== null) {
+                socket.emit('reset_game', { password });
+            }
+        }
+
+        socket.on('game_state', data => {
+            const players = data.players;
+            const questions = data.questions;
+            const gameDiv = document.getElementById('game');
+
+            if (!players[currentUsername]) return;
+
+            const player = players[currentUsername];
+            const qIndex = player.current_q;
+            const score = player.score;
+
+            let html = `<p><b>Status:</b> ${data.message}</p>`;
+            html += `<p><b>Your Score:</b> ${score}</p>`;
+
+            if (qIndex < questions.length) {
+                const q = questions[qIndex];
+                html += `<h3>Q${qIndex + 1}: ${q.question}</h3>`;
+                q.options.forEach(opt => {
+                    html += `<button class="option-button" onclick="answer('${opt}')">${opt}</button>`;
+                });
+            } else {
+                html += `<p><b>You’ve completed the quiz!</b></p>`;
+            }
+
+            html += `<h4>Players:</h4>`;
+
+            // New runway display for each player
+            for (const [name, p] of Object.entries(players)) {
+                const icon = p.icon || "😀";
+                html += `
+                <div class="player-runway-container">
+                  <div class="player-name">${name} (${p.score}/${questions.length})</div>
+                  <div class="runway">
+                    ${Array(20).fill(0).map((_, i) =>
+                    `<div class="block${i < p.score ? ' filled' : ''}">${i < p.score ? icon : ''}</div>`
+                    ).join('')}
+                </div>
+            </div>
+            `;
+            }
+
+
+            gameDiv.innerHTML = html;
+        });
+
+        socket.on('error', data => {
+            alert(data.message);
+        });
+        let selectedIcon = "😀"; // default icon
+
+        // Add event listeners to icon options
+        document.querySelectorAll('.icon-option').forEach(elem => {
+            elem.addEventListener('click', () => {
+                // Remove "selected" class from all
+                document.querySelectorAll('.icon-option').forEach(el => el.classList.remove('selected'));
+                // Add "selected" to clicked
+                elem.classList.add('selected');
+                selectedIcon = elem.getAttribute('data-icon');
+            });
+        });
+
+        // Update joinGame to send icon with username
+        function joinGame() {
+            currentUsername = document.getElementById('username').value;
+            if (!currentUsername.trim()) {
+                alert("Please enter your name.");
+                return;
+            }
+            socket.emit('join', { username: currentUsername, icon: selectedIcon });
+        }
+
+    </script>
+</body>
+</html>

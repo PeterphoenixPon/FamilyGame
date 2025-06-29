@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select a Game</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        button {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select a Game</h1>
+    <button onclick="window.location.href='http://{{ ip }}:5001'">Closest Wins</button>
+    <button onclick="window.location.href='http://{{ ip }}:5002'">Number Guessing</button>
+</body>
+</html>

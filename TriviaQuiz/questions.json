@@ -1,0 +1,262 @@
+[
+    {
+        "question": "What primary colors are used to mix all other colors?",
+        "options": [ "Red, Blue, Yellow", "Red, Green, Blue", "Blue, Yellow, Black", "Red, White, Blue" ],
+        "answer": "Red, Blue, Yellow"
+    },
+    {
+        "question": "What is the tallest mammal?",
+        "options": [ "Elephant", "Giraffe", "Horse", "Camel" ],
+        "answer": "Giraffe"
+    },
+    {
+        "question": "Who painted the Mona Lisa?",
+        "options": [ "Van Gogh", "Michelangelo", "Da Vinci", "Picasso" ],
+        "answer": "Da Vinci"
+    },
+    {
+        "question": "What gas do plants absorb from the atmosphere?",
+        "options": [ "Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen" ],
+        "answer": "Carbon Dioxide"
+    },
+    {
+        "question": "Which direction does the sun rise?",
+        "options": [ "North", "East", "South", "West" ],
+        "answer": "East"
+    },
+    {
+        "question": "Which movie features the character Jack Dawson?",
+        "options": [ "Titanic", "Avatar", "Inception", "The Revenant" ],
+        "answer": "Titanic"
+    },
+    {
+        "question": "Who founded Microsoft?",
+        "options": [ "Steve Jobs", "Mark Zuckerberg", "Bill Gates", "Elon Musk" ],
+        "answer": "Bill Gates"
+    },
+    {
+        "question": "How many players are on a soccer team?",
+        "options": [ "9", "10", "11", "12" ],
+        "answer": "11"
+    },
+    {
+        "question": "What planet is known for its rings?",
+        "options": [ "Mars", "Earth", "Jupiter", "Saturn" ],
+        "answer": "Saturn"
+    },
+    {
+        "question": "In which book does a character say 'I am your father'?",
+        "options": [ "Star Wars", "Lord of the Rings", "Harry Potter", "None" ],
+        "answer": "Star Wars"
+    },
+    {
+        "question": "What does 'CPU' stand for?",
+        "options": [ "Central Power Unit", "Control Processing Unit", "Central Processing Unit", "Computer Personal Unit" ],
+        "answer": "Central Processing Unit"
+    },
+    {
+        "question": "Which country hosted the 2016 Summer Olympics?",
+        "options": [ "China", "Brazil", "UK", "Russia" ],
+        "answer": "Brazil"
+    },
+    {
+        "question": "Who sings the song 'Shape of You'?",
+        "options": [ "Adele", "Ed Sheeran", "Bruno Mars", "Justin Bieber" ],
+        "answer": "Ed Sheeran"
+    },
+    {
+        "question": "In what year did World War II end?",
+        "options": [ "1940", "1945", "1950", "1939" ],
+        "answer": "1945"
+    },
+    {
+        "question": "What is the capital of Canada?",
+        "options": [ "Toronto", "Vancouver", "Ottawa", "Montreal" ],
+        "answer": "Ottawa"
+    },
+    {
+        "question": "Which fruit has seeds on the outside?",
+        "options": [ "Strawberry", "Banana", "Apple", "Grape" ],
+        "answer": "Strawberry"
+    },
+    {
+        "question": "Which country has the most natural lakes?",
+        "options": [ "Canada", "Russia", "USA", "Brazil" ],
+        "answer": "Canada"
+    },
+    {
+        "question": "Who was the first President of the United States?",
+        "options": [ "George Washington", "Thomas Jefferson", "Abraham Lincoln", "John Adams" ],
+        "answer": "George Washington"
+    },
+    {
+        "question": "What is sushi traditionally wrapped in?",
+        "options": [ "Rice paper", "Seaweed", "Lettuce", "Plastic" ],
+        "answer": "Seaweed"
+    },
+    {
+        "question": "Who wrote 'Romeo and Juliet'?",
+        "options": [ "Shakespeare", "Chaucer", "Dickens", "Hemingway" ],
+        "answer": "Shakespeare"
+    },
+    {
+        "question": "What is the tallest mammal?",
+        "options": [ "Elephant", "Giraffe", "Horse", "Camel" ],
+        "answer": "Giraffe"
+    },
+    {
+        "question": "What gas do plants absorb from the atmosphere?",
+        "options": [ "Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen" ],
+        "answer": "Carbon Dioxide"
+    },
+    {
+        "question": "Who painted the Mona Lisa?",
+        "options": [ "Van Gogh", "Michelangelo", "Da Vinci", "Picasso" ],
+        "answer": "Da Vinci"
+    },
+    {
+        "question": "What primary colors are used to mix all other colors?",
+        "options": [ "Red, Blue, Yellow", "Red, Green, Blue", "Blue, Yellow, Black", "Red, White, Blue" ],
+        "answer": "Red, Blue, Yellow"
+    },
+    {
+        "question": "What planet is known for its rings?",
+        "options": [ "Mars", "Earth", "Jupiter", "Saturn" ],
+        "answer": "Saturn"
+    },
+    {
+        "question": "Which direction does the sun rise?",
+        "options": [ "North", "East", "South", "West" ],
+        "answer": "East"
+    },
+    {
+        "question": "Who founded Microsoft?",
+        "options": [ "Steve Jobs", "Mark Zuckerberg", "Bill Gates", "Elon Musk" ],
+        "answer": "Bill Gates"
+    },
+    {
+        "question": "How many players are on a soccer team?",
+        "options": [ "9", "10", "11", "12" ],
+        "answer": "11"
+    },
+    {
+        "question": "In what year did World War II end?",
+        "options": [ "1940", "1945", "1950", "1939" ],
+        "answer": "1945"
+    },
+    {
+        "question": "What does 'CPU' stand for?",
+        "options": [ "Central Power Unit", "Control Processing Unit", "Central Processing Unit", "Computer Personal Unit" ],
+        "answer": "Central Processing Unit"
+    },
+    {
+        "question": "Which fruit has seeds on the outside?",
+        "options": [ "Strawberry", "Banana", "Apple", "Grape" ],
+        "answer": "Strawberry"
+    },
+    {
+        "question": "Who wrote 'Romeo and Juliet'?",
+        "options": [ "Shakespeare", "Chaucer", "Dickens", "Hemingway" ],
+        "answer": "Shakespeare"
+    },
+    {
+        "question": "What is the fastest bird in the world?",
+        "options": [ "Peregrine Falcon", "Golden Eagle", "Swallow", "Albatross" ],
+        "answer": "Peregrine Falcon"
+    },
+    {
+        "question": "Which bird is known for its beautiful tail feathers and courtship dance?",
+        "options": [ "Peacock", "Flamingo", "Swan", "Macaw" ],
+        "answer": "Peacock"
+    },
+    {
+        "question": "What bird is famous for its ability to mimic human speech?",
+        "options": [ "Parrot", "Crow", "Mockingbird", "Cockatoo" ],
+        "answer": "Parrot"
+    },
+    {
+        "question": "Which bird is the largest living bird by wingspan?",
+        "options": [ "Wandering Albatross", "Andean Condor", "Bald Eagle", "Ostrich" ],
+        "answer": "Wandering Albatross"
+    },
+    {
+        "question": "What bird is known for migrating the longest distance annually?",
+        "options": [ "Arctic Tern", "Canada Goose", "Bar-tailed Godwit", "Sandhill Crane" ],
+        "answer": "Arctic Tern"
+    },
+    {
+        "question": "Which bird can rotate its head nearly 270 degrees?",
+        "options": [ "Owl", "Hawk", "Eagle", "Falcon" ],
+        "answer": "Owl"
+    },
+    {
+        "question": "What bird lays the largest eggs?",
+        "options": [ "Ostrich", "Emu", "Cassowary", "Albatross" ],
+        "answer": "Ostrich"
+    },
+    {
+        "question": "Which bird is known as the national bird of the United States?",
+        "options": [ "Bald Eagle", "Golden Eagle", "Red-tailed Hawk", "Peregrine Falcon" ],
+        "answer": "Bald Eagle"
+    },
+    {
+        "question": "Which bird species is known for its unique drumming communication?",
+        "options": [ "Woodpecker", "Kingfisher", "Nightingale", "Pigeon" ],
+        "answer": "Woodpecker"
+    },
+    {
+        "question": "What type of bird is the Kiwi?",
+        "options": [ "Flightless Bird", "Bird of Prey", "Waterfowl", "Songbird" ],
+        "answer": "Flightless Bird"
+    },
+    {
+        "question": "Which bird is known for its distinctive laughing call?",
+        "options": [ "Kookaburra", "Crow", "Seagull", "Mockingbird" ],
+        "answer": "Kookaburra"
+    },
+    {
+        "question": "What is the primary diet of hummingbirds?",
+        "options": [ "Nectar", "Insects", "Seeds", "Fish" ],
+        "answer": "Nectar"
+    },
+    {
+        "question": "Which bird is famous for building large, elaborate nests called 'mud nests'?",
+        "options": [ "Swallow", "Eagle", "Owl", "Penguin" ],
+        "answer": "Swallow"
+    },
+    {
+        "question": "What bird is known to have the most colorful plumage in the world?",
+        "options": [ "Bird of Paradise", "Macaw", "Kingfisher", "Mandarin Duck" ],
+        "answer": "Bird of Paradise"
+    },
+    {
+        "question": "Which bird can sleep while flying during long migrations?",
+        "options": [ "Albatross", "Peregrine Falcon", "Swallow", "Sandpiper" ],
+        "answer": "Albatross"
+    },
+    {
+        "question": "Which bird is often associated with delivering babies in folklore?",
+        "options": [ "Stork", "Pelican", "Heron", "Egret" ],
+        "answer": "Stork"
+    },
+    {
+        "question": "Which bird is known for its incredible ability to camouflage with tree bark?",
+        "options": [ "Potoo", "Nightjar", "Owl", "Nighthawk" ],
+        "answer": "Potoo"
+    },
+    {
+        "question": "What bird is the symbol of peace?",
+        "options": [ "Dove", "Eagle", "Sparrow", "Crow" ],
+        "answer": "Dove"
+    },
+    {
+        "question": "Which bird is known for its vibrant pink color?",
+        "options": [ "Flamingo", "Cardinal", "Robin", "Canary" ],
+        "answer": "Flamingo"
+    },
+    {
+        "question": "What bird is capable of mimicking chainsaws and camera shutters?",
+        "options": [ "Lyrebird", "Parrot", "Mockingbird", "Cuckoo" ],
+        "answer": "Lyrebird"
+    }
+]

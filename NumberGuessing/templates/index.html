@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Number Guessing Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        #status, #hint {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            margin: 6px 0;
+            box-sizing: border-box;
+        }
+
+        #players {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Number Guessing Game</h1>
+    <div id="status"></div>
+    <div id="hint"></div>
+    <input id="username" placeholder="Enter name" />
+    <button onclick="joinGame()">Join</button><br><br>
+    <input id="guessInput" type="number" placeholder="Your guess" />
+    <button onclick="submitGuess()">Submit Guess</button>
+    <button onclick="resetGame()" style="background-color: #ffdddd;">Hard Reset</button>
+    <div id="players"></div>
+
+    <script>
+        const socket = io();
+
+        function joinGame() {
+            const username = document.getElementById('username').value;
+            socket.emit('join', { username });
+        }
+
+        function submitGuess() {
+            const username = document.getElementById('username').value;
+            const guessInput = document.getElementById('guessInput');
+            const guess = document.getElementById('guessInput').value;
+            socket.emit('guess', { username, guess });
+            // Clear the input box after submission
+            guessInput.value = '';
+        }
+        function resetGame() {
+            const password = prompt("Enter reset password:");
+            if (password !== null) {
+                socket.emit('reset_game', { password });
+            }
+        }
+
+
+        socket.on('game_state', data => {
+            document.getElementById('status').innerText = data.message;
+            document.getElementById('hint').innerText = data.hint;
+
+            if (data.players) {
+                const playerList = Object.entries(data.players)
+                    .map(([name, info]) => `${name}: ${info.points} point${info.points !== 1 ? 's' : ''}`)
+                    .join('<br>');
+                document.getElementById('players').innerHTML = `<b>Players:</b><br>${playerList}`;
+            }
+        });
+
+        socket.on('error', data => {
+            alert(data.message);
+        });
+    </script>
+    <style>
+        #players {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: fit-content;
+            background-color: #f9f9f9;
+        }
+    </style>
+</body>
+</html>
